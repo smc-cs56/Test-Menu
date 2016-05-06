@@ -1,6 +1,6 @@
 import java.util.*;
 
-public abstract class JYInputHelper
+public class JYInputHelper // why use abstract class, when this is never extended
 {
 	public static int showUserInput(int nGroupNumber)
 	{
