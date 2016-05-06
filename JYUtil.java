@@ -1,12 +1,18 @@
 import java.util.*;
 
-public abstract class JYUtil
+public class JYUtil // no need to be abstract. it's never extended
 {
 	private JYUtil()
 	{
 
 	}
 
+	
+	 // Purpose: get a random number from min to max
+	 //
+	 // Param: int - min and max
+	 //
+	 // Return: a random number btwn min and max
 	public static int randomNumber(int min, int max) {
 
 	    Random rand = new Random();
@@ -87,11 +93,13 @@ public abstract class JYUtil
 
 					String szCard = JYUtil.convertCardNumber(nRandomNumber) + " " + JYUtil.convertCardSuit(nRandomSuit);
 
-			        if (!mapReturn.containsKey(szCard))
-			        {
-			            mapReturn.put(szCard, nGroup);
-			        	bExist = true;
-			        }
+					// check if szCard is already in mapReturn. If not, add it in
+					// and get out of while loop
+			        	if (!mapReturn.containsKey(szCard))
+			        	{
+			            		mapReturn.put(szCard, nGroup);
+			        		bExist = true;
+			        	}
 				}
 			}
 		}
@@ -141,7 +149,13 @@ public abstract class JYUtil
 
 		return mapReturn;
 	}
-
+	
+	 // Purpose: creates a string representation of nCardNumber. If 2 <= nCardNumber <= 10,
+	 // no need to enter switch statement
+	 //
+	 // Param: Integer - the card number (1-13)
+	 //
+	 // Return: string representation of nCardNumber
 	public static String convertCardNumber(Integer nCardNumber)
 	{
 		String szReturn = nCardNumber.toString();
@@ -167,7 +181,13 @@ public abstract class JYUtil
 
 		return szReturn;
 	}
-
+	
+	 // Purpose: creates a string representation of nCardSuit. 
+	 // Card is either Spade, Heart, Diamond, Club
+	 // 
+	 // Param: Integer - Card suit (1-4)
+	 //
+	 // Return: string representation of nCardSuit
 	public static String convertCardSuit(Integer nCardSuit)
 	{
 		String szReturn = "";
