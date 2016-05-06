@@ -34,9 +34,9 @@ public class JYCardTrick implements ActionListener {
 	private  JPanel panel = new JPanel();
 	private  JFrame frame = new JFrame();
 	private  JButton[] groupButtons = new JButton[]{new JButton("Group One"),
-												 new JButton("Group Two"),
-												 new JButton("Group Three"), 
-												 new JButton("Group Four")};
+							new JButton("Group Two"),
+							new JButton("Group Three"), 
+							new JButton("Group Four")};
 
 	private JYCardTrick()
 	{
@@ -49,7 +49,7 @@ public class JYCardTrick implements ActionListener {
 		// make these buttons do something.
 		for (int i = 0; i < groupButtons.length; i++) {
 				groupButtons[i].addActionListener(this);
-			}
+		}
 
 		if (mapCards.size() > 0)
 		{
