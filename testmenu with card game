@@ -1,4 +1,4 @@
-// Not sure if its too late or already figured out but I have made some a few changes to the lines 60-64.  
+// Not sure if its too late or already figured out but I have made some a few changes to the lines 66-69.  
 //was able to make it so that the game works upon 
 //clicking the button. I've added (JYCardTrick cardTrick = new JYCardTrick();) 
 //to line 60-64. Something similar can be done about the memory game. 
