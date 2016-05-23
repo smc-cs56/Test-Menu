@@ -1,9 +1,3 @@
-// Not sure if its too late or already figured out but I have made some a few changes to the lines 66-69.  
-//was able to make it so that the game works upon 
-//clicking the button. I've added (JYCardTrick cardTrick = new JYCardTrick();) 
-//to line 60-64. Something similar can be done about the memory game. 
-//i have also changed 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -18,33 +12,39 @@ public class TestMenu extends JFrame implements ActionListener{
  private JButton close;
  private ImageIcon mainImg;
  private JLabel mainLabel;
- 
+ private static TestMenu TestInstance = null; //the singleton instance of your MiniPad
+
+    
+       
  public TestMenu(){
-      JPanel p = new JPanel();
+      
+	  JPanel p = new JPanel();
       p.setLayout(null);
       
       mainImg = new ImageIcon(getClass().getResource("newFrontImage.jpg"));
 		mainLabel = new JLabel(mainImg);
-		mainLabel.setBounds(150,50,480,360);
+		mainLabel.setBounds(50,50,480,360);
 		add(mainLabel);
       
       magicButton = new JButton("magic trick");
-      magicButton.setBounds(150,470,100,40);
+      magicButton.setBounds(50,470,100,40);
       magicButton.addActionListener(this);
       p.add(magicButton);
-      
+    
+	  
+	  
       memoryButton = new JButton("memory");
-      memoryButton.setBounds(275,470,100,40);
+      memoryButton.setBounds(180,470,100,40);
       magicButton.addActionListener(this);
       p.add(memoryButton);
       
       instructButton = new JButton("instructions");
-      instructButton.setBounds(400,470,100,40);
+      instructButton.setBounds(300,470,100,40);
       instructButton.addActionListener(this);
       p.add(instructButton);
       
       close = new JButton("close");
-      close.setBounds(525,470,100,40);
+      close.setBounds(430,470,100,40);
       close.addActionListener(this);
       p.add(close);
       
@@ -55,8 +55,10 @@ public class TestMenu extends JFrame implements ActionListener{
       p.setBackground(customColor);
       //setLayout(null);
       setDefaultCloseOperation(3);
-      setSize(800,600);
-      setVisible(true);
+      
+	 setSize(600,600);
+     setLocationRelativeTo(null);
+	 setVisible(true);
      }
  
  	public void actionPerformed (ActionEvent e)
@@ -66,11 +68,13 @@ public class TestMenu extends JFrame implements ActionListener{
  		 //JYCardTrick();
 			System.out.print("Enter your name.");
 			JYCardTrick cardTrick = new JYCardTrick();
+			dispose();
  		}
  		else if (e.getSource()==memoryButton)
  		{
  			//memoryButton();
 			//JYCardTrick.main(args);
+			dispose();
  		}
  		else if (e.getSource()==instructButton)
  		{
