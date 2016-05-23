@@ -1,8 +1,3 @@
-
-
-
-
-
 import java.util.*;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -23,9 +18,16 @@ public class JYCardTrick implements ActionListener {
 	private  JPanel panel = new JPanel();
 	private  JFrame frame = new JFrame();
 	private List<JButton> groupButtons = new ArrayList<JButton>();
-	
+	private JButton close;
 	public JYCardTrick()
 	{
+		
+		close = new JButton("Main Menu");
+		close.setBounds(0,541,465,20);
+		close.addActionListener(this);
+		frame.add(close);
+		
+		
 		this.frame.setSize(600, 600);
 		this.frame.setLocationRelativeTo(null);
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,7 +37,8 @@ public class JYCardTrick implements ActionListener {
 			JButton button = new JButton("Group " + nGroup);
 			groupButtons.add(button);
 		}
-
+		
+      
 		mapCards = JYUtil.createMapData(nGroupNumber, nCardNumber);
 
 		// make these buttons do something.
@@ -69,7 +72,7 @@ public class JYCardTrick implements ActionListener {
 		// Remove the old JPanel when user selects a group.
 		this.frame.remove(panel); 
 		this.panel = new JPanel();
-		this.panel.setLayout(new GridLayout(4, 5));
+		this.panel.setLayout(new GridLayout(4,5));
 
 		for (Map.Entry<String, Integer> entry : mapData.entrySet()) {
 
@@ -96,6 +99,14 @@ public class JYCardTrick implements ActionListener {
 	public void actionPerformed(ActionEvent e) 
 	{
 
+	if(e.getSource()==close)
+ 		{
+			
+			this.frame.dispose();
+			TestMenu menu = new TestMenu();
+			
+ 		}
+	
 		for (int nIndex = 0; nIndex < nGroupNumber; nIndex++)
 		{
 			if ( (buttonPressedCounter != 2) && (e.getSource() == groupButtons.get(nIndex)) ) {
@@ -109,6 +120,8 @@ public class JYCardTrick implements ActionListener {
 			for (Map.Entry<String, Integer> entry : mapCards.entrySet()) {
 				if (entry.getKey() == selectedCards.get(nSelectedGroup - 1)) {
 					JOptionPane.showMessageDialog(null, "Your card is " + entry.getKey());
+					
+					//dispose();
 					break;
 					// I want this to be an image of the card instead.
 				}
