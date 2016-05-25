@@ -1,8 +1,14 @@
-import javax.swing.*;
-import java.awt.*;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+// same functionality. doesn't use whole package
 
 public class TestMenu extends JFrame implements ActionListener{
 
@@ -20,7 +26,7 @@ public class TestMenu extends JFrame implements ActionListener{
       mainImg = new ImageIcon(getClass().getResource("newFrontImage.jpg"));
 		mainLabel = new JLabel(mainImg);
 		mainLabel.setBounds(150,50,480,360);
-		add(mainLabel);
+		this.add(mainLabel);
       
       magicButton = new JButton("magic trick");
       magicButton.setBounds(150,470,100,40);
@@ -44,14 +50,14 @@ public class TestMenu extends JFrame implements ActionListener{
       
       
       
-      getContentPane().add(p);
+      getContentPane().add(p); // what does this do?
       
       Color customColor= new Color(15,112,1);
       p.setBackground(customColor);
       //setLayout(null);
-      setDefaultCloseOperation(3);
-      setSize(800,600);
-      setVisible(true);
+      this.setDefaultCloseOperation(3);
+      this.setSize(800,600);
+      this.setVisible(true);
 
      }
  
@@ -59,6 +65,9 @@ public class TestMenu extends JFrame implements ActionListener{
  	{
  		if(e.getSource()==magicButton)
  		{
+ 			// vanishes. unsure if I should remove it
+ 			this.setVisible(false);
+ 			JYCardTrick test = JYCardTrick.getInstance(); // play the magic card game
  			//JYCardTrick();
  		}
  		else if (e.getSource()==memoryButton)
