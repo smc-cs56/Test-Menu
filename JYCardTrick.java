@@ -12,15 +12,23 @@
 // We need one JFrame for this project.
 // ie JFrameFromMenuGUI.add.(this.panel);
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 import java.awt.Color;
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JOptionPane;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
-public class JYCardTrick implements ActionListener {
+// Maybe its easier if we just use multiple JFrames
+public class JYCardTrick extends JFrame implements ActionListener {
 	protected final int nGroupNumber = 4;
 	protected final int nCardNumber = 4;
 	private Map<String, Integer> mapCards;
@@ -32,14 +40,15 @@ public class JYCardTrick implements ActionListener {
 	
 	// JPanel for game. JFrame should be from Menu GUI. JButton - groups
 	private  JPanel panel = new JPanel();
-	private  JFrame frame = new JFrame();
+	//private  JFrame frame = new JFrame();
 	private List<JButton> groupButtons = new ArrayList<JButton>();
 
-	private JYCardTrick()
-	{
-		this.frame.setSize(600, 600);
-		this.frame.setLocationRelativeTo(null);
-		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	private static JYCardTrick singletonCardTrick = null;//new JYCardTrick();
+
+	private JYCardTrick() {
+		this.setSize(600, 600);
+		this.setLocationRelativeTo(null);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		for (int nGroup = 1; nGroup <= nGroupNumber; nGroup++)
 		{
@@ -77,8 +86,7 @@ public class JYCardTrick implements ActionListener {
 
 		// JPanels will stack whenever this method is called.
 		// Remove the old JPanel when user selects a group.
-		this.frame.remove(panel); 
-		this.panel = new JPanel();
+		this.setPanel();
 		this.panel.setLayout(new GridLayout(4, 5));
 
 		for (Map.Entry<String, Integer> entry : mapData.entrySet()) {
@@ -96,8 +104,8 @@ public class JYCardTrick implements ActionListener {
 		}
 
 		this.panel.setBackground(Color.gray);
-		this.frame.add(panel); 
-		this.frame.setVisible(true); 
+		this.add(panel);
+		this.setVisible(true);
 	}
 
 	/**
@@ -134,6 +142,7 @@ public class JYCardTrick implements ActionListener {
 			// Sort cards by group
 			mapCards = JYUtil.sortByComparator(mapCards);
 
+			this.remove(panel);
 			this.showCardsByGroup(mapCards);
 
 			if (buttonPressedCounter == 1) {
@@ -142,13 +151,28 @@ public class JYCardTrick implements ActionListener {
 		}
 	}
 
-
-
-	public static void main(String[] args) {
-
-		JYCardTrick cardTrick = new JYCardTrick();
-
+	public JPanel getPanel() {
+		return panel;
 	}
+
+	private void setPanel() {
+		this.panel = new JPanel();
+	}
+
+	// Singleton class fo dat ass bruh
+	public synchronized static JYCardTrick getInstance() {
+		if (singletonCardTrick == null) {
+			singletonCardTrick = new JYCardTrick();
+		}
+
+		return singletonCardTrick;
+	}
+
+	//public static void main(String[] args) {
+
+	//	JYCardTrick cardTrick = new JYCardTrick();
+
+	//}
 
 	
 }
