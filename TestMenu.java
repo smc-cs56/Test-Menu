@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
-// same functionality. doesn't use whole package
 
 public class TestMenu extends JFrame implements ActionListener{
 
@@ -24,9 +23,9 @@ public class TestMenu extends JFrame implements ActionListener{
       p.setLayout(null);
       
       mainImg = new ImageIcon(getClass().getResource("newFrontImage.jpg"));
-		mainLabel = new JLabel(mainImg);
-		mainLabel.setBounds(150,50,480,360);
-		this.add(mainLabel);
+      mainLabel = new JLabel(mainImg);
+      mainLabel.setBounds(150,50,480,360);
+      this.add(mainLabel);
       
       magicButton = new JButton("magic trick");
       magicButton.setBounds(150,470,100,40);
@@ -35,7 +34,7 @@ public class TestMenu extends JFrame implements ActionListener{
       
       memoryButton = new JButton("memory");
       memoryButton.setBounds(275,470,100,40);
-      magicButton.addActionListener(this);
+      memoryButton.addActionListener(this);
       p.add(memoryButton);
       
       instructButton = new JButton("instructions");
@@ -50,8 +49,9 @@ public class TestMenu extends JFrame implements ActionListener{
       
       
       
-      getContentPane().add(p); // what does this do?
-      
+      //getContentPane().add(p);
+      this.add(p);
+
       Color customColor= new Color(15,112,1);
       p.setBackground(customColor);
       //setLayout(null);
@@ -60,33 +60,37 @@ public class TestMenu extends JFrame implements ActionListener{
       this.setVisible(true);
 
      }
- 
- 	public void actionPerformed (ActionEvent e)
- 	{
- 		if(e.getSource()==magicButton)
- 		{
- 			// vanishes. unsure if I should remove it
- 			this.setVisible(false);
- 			JYCardTrick test = JYCardTrick.getInstance(); // play the magic card game
- 			//JYCardTrick();
- 		}
- 		else if (e.getSource()==memoryButton)
- 		{
- 			//memoryButton();
- 		}
- 		else if (e.getSource()==instructButton)
- 		{
- 			JFrame Instruct = new JFrame();
-			Instruct instructions = new Instruct();
-			//instructions.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			instructions.setSize(300,200);
-			instructions.setVisible(true);
- 		}
- 		else if(e.getSource()==close)
- 		{
- 			System.exit(0);
- 		}
- 	}
+
+     @Override
+   public void actionPerformed (ActionEvent e)
+   {
+      if(e.getSource()==magicButton)
+      {
+         //JYCardTrick();
+         this.setVisible(false);
+         //JYCardTrick temp = new JYCardTrick();
+         JYCardTrick test = JYCardTrick.getInstance();//new JYCardTrick();
+      }
+      else if (e.getSource()==memoryButton)
+      {
+         //memoryButton();
+         this.setVisible(false);
+         MemoryGame test = MemoryGame.getInstance();
+         //MemoryGame test = new MemoryGame();
+      }
+      else if (e.getSource()==instructButton)
+      {
+         JFrame Instruct = new JFrame();
+         Instruct instructions = new Instruct();
+         instructions.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         instructions.setSize(300,200);
+         instructions.setVisible(true);
+      }
+      else if(e.getSource()==close)
+      {
+         System.exit(0);
+      }
+   }
    public static void main(String[]args){
        new TestMenu();
        }
@@ -94,25 +98,25 @@ public class TestMenu extends JFrame implements ActionListener{
 
 class Instruct extends JFrame implements ActionListener
 {
-	private JTextArea instructions = new JTextArea();
-	private JButton back;
-	
-	public Instruct()
-	{
-		setLayout(new FlowLayout());
-		//instructions area
-		instructions = new JTextArea("INSTRUCTIONS INSTRUCTIONS INSTRUCTIONS \nINSTRUCTIONS INSTRUCTIONS INSTRUCTIONS \nINSTRUCTIONS INSTRUCTIONS INSTRUCTIONS \n ");
-		add(instructions);
-		
-		back = new JButton("Back");
-		back.addActionListener(this);
-		add(back);
-	}
-	public void actionPerformed(ActionEvent e)
-	{
-		if(e.getSource()==back)
-		{
-			this.dispose();
-		}
-	}
+   private JTextArea instructions = new JTextArea();
+   private JButton back;
+   
+   public Instruct()
+   {
+      setLayout(new FlowLayout());
+      //instructions area
+      instructions = new JTextArea("INSTRUCTIONS INSTRUCTIONS INSTRUCTIONS \nINSTRUCTIONS INSTRUCTIONS INSTRUCTIONS \nINSTRUCTIONS INSTRUCTIONS INSTRUCTIONS \n ");
+      add(instructions);
+      
+      back = new JButton("Back");
+      back.addActionListener(this);
+      add(back);
+   }
+   public void actionPerformed(ActionEvent e)
+   {
+      if(e.getSource()==back)
+      {
+         this.dispose();
+      }
+   }
 }
