@@ -67,14 +67,16 @@ public class TestMenu extends JFrame implements ActionListener{
       if(e.getSource()==magicButton)
       {
          //JYCardTrick();
-         this.setVisible(false);
+         //this.setVisible(false);
          //JYCardTrick temp = new JYCardTrick();
+         this.dispose();
          JYCardTrick test = JYCardTrick.getInstance();//new JYCardTrick();
       }
       else if (e.getSource()==memoryButton)
       {
          //memoryButton();
-         this.setVisible(false);
+         //this.setVisible(false);
+         this.dispose();
          MemoryGame test = MemoryGame.getInstance();
          //MemoryGame test = new MemoryGame();
       }
