@@ -12,8 +12,6 @@ public class UserList extends JFrame
 {
 	public UserList() throws SQLException, ClassNotFoundException
 	{
-		UserList testJFrame = new UserList();
-		
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection connection = DriverManager.getConnection("jdbc:mysql://76.90.217.50/test", "mohan", "password");
 		Statement statement = connection.createStatement();
