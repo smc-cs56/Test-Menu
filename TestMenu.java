@@ -31,10 +31,10 @@
        mainLabel.setBounds(150,50,480,360);
        this.add(mainLabel);
 	   
-	   register = new JButton("Register");
+	   /*register = new JButton("Register");
 	   register .setBounds(500,450,200,50);
 	   register.addActionListener(this);
-	   p.add(register);
+	   p.add(register);*/
        
 	   vreg = new JButton("User List");
 	   vreg .setBounds(300,500,200,50 );
@@ -101,7 +101,7 @@
           //this.setVisible(false);
        
          //this.dispose();
-           SimpleJdbc thing = new SimpleJdbc();
+           //SimpleJdbc thing = new SimpleJdbc();
           
         }
         else if (e.getSource()==memoryButton)
@@ -126,10 +126,8 @@
           System.exit(0);
        } else if(e.getSource() == vreg) {
        	try{
-		UserList frame = new UserList();
-		
-       	frame.setSize(300, 500);
-       	frame.setVisible(true);
+		      new UserList();
+
 		} catch(SQLException se) {
 			se.printStackTrace();
 		} catch (ClassNotFoundException err) {

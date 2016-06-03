@@ -12,30 +12,48 @@ public class UserList extends JFrame
 {
 	public UserList() throws SQLException, ClassNotFoundException
 	{
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection connection = DriverManager.getConnection("jdbc:mysql://76.90.217.50/test", "mohan", "password");
-		Statement statement = connection.createStatement();
+		setWindow();
+		retrieveUserList();
+	}
 
-		String szSQL = "SELECT * FROM Game3 WHERE fname is not null ORDER BY date DESC;";
+	private void setWindow()
+	{
+		this.setSize(600, 500);
+       	this.setVisible(true);
+        this.setLayout(new BorderLayout());
+	}
+
+	private void retrieveUserList() throws SQLException, ClassNotFoundException
+	{
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection connection = DriverManager.getConnection(SqlConfig.getHostname(), SqlConfig.getUsername(), SqlConfig.getPassword());
+		Statement statement = connection.createStatement();		
+
+		String szSQL = "SELECT * FROM Game3 WHERE fname is not null ORDER BY score, duration ASC LIMIT 0, 25;";
+
 		ResultSet resultSet = statement.executeQuery(szSQL);
 		
 		List<String[]> values = new ArrayList<String[]>();
+		int nNumber = 1;
 		while (resultSet.next())
 		{
-			values.add(new String[] { resultSet.getString("fname"), resultSet.getString("lname"), resultSet.getString("date") } );
+			values.add(new String[] { Integer.toString(nNumber), resultSet.getString("score"), resultSet.getString("duration") + " seconds", resultSet.getString("fname"), resultSet.getString("lname"), resultSet.getString("date") } );
+			nNumber++;
 		}
 		connection.close();
 		
 		List<String> columns = new ArrayList<String>();
+		columns.add("#");
+		columns.add("Score");
+		columns.add("Duration");
 		columns.add("First Name");
         columns.add("Last Name");
         columns.add("Date");
 		
 		TableModel tableModel = new DefaultTableModel(values.toArray(new Object[][] {}), columns.toArray());
         JTable table = new JTable(tableModel);
-        testJFrame.setLayout(new BorderLayout());
-        testJFrame.add(new JScrollPane(table), BorderLayout.CENTER);
 
-        testJFrame.add(table.getTableHeader(), BorderLayout.NORTH);
+        this.add(new JScrollPane(table), BorderLayout.CENTER);
+        this.add(table.getTableHeader(), BorderLayout.NORTH);
 	}
 }
