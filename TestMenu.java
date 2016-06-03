@@ -132,12 +132,8 @@
        {
           System.exit(0);
        } else if(e.getSource() == vreg) {
-       	JFrame vregFrame = new JFrame();
-       	JPanel vregPanel = new JPanel();
-       	vregFrame.add(vregPanel);
-       	vregFrame.setSize(800, 600);
-	vregFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-       	vregFrame.setVisible(true);
+       	VregFrame frame = new VregFrame();
+       	VregFrame.setVisible(true);
        }
     }
     public static void main(String[]args){
@@ -192,3 +188,22 @@
        }
     }
  }
+
+class VregFrame extends JFrame implements ActionListener {
+   private vregPanel = new JPanel();
+   private JButton back = new JButton("Back");
+
+   public VregFrame() {
+      this.add(vregPanel);
+      vregFrame.setSize(800, 600);
+      back.addActionListener(this);
+      this.add(back);
+
+   }
+
+   public void actionPerformed(ActionEvent e) {
+      if (e.getSource == back) {
+         this.dispose();
+      }
+   }
+}
