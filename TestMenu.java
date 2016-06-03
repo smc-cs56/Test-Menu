@@ -89,15 +89,7 @@
            JYCardTrick test = JYCardTrick.getInstance();//new JYCardTrick();
         }
 		 
-		 else if (e.getSource()==vreg)
-        {
-           //memoryButton();
-          this.setVisible(false);
-         //this.setVisible(false);
-         this.dispose();
-           MemoryGame test = MemoryGame.getInstance();
-           //MemoryGame test = new MemoryGame();
-        }
+
 		 
 		 
 		 
