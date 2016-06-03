@@ -39,8 +39,5 @@ public class UserList extends JFrame
         testJFrame.add(new JScrollPane(table), BorderLayout.CENTER);
 
         testJFrame.add(table.getTableHeader(), BorderLayout.NORTH);
-
-        testJFrame.setVisible(true);
-        testJFrame.setSize(300,500);
 	}
 }
