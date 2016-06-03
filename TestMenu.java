@@ -131,6 +131,13 @@
        else if(e.getSource()==close)
        {
           System.exit(0);
+       } else if(e.getSource() == vreg) {
+       	JFrame vregFrame = new JFrame();
+       	JPanel vregPanel = new JPanel();
+       	vregFrame.add(vregPanel);
+       	vregFrame.setSize(800, 600);
+	vregFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+       	vregFrame.setVisible(true);
        }
     }
     public static void main(String[]args){
