@@ -8,6 +8,7 @@
  import javax.swing.ImageIcon;
  import javax.swing.JLabel;
  import javax.swing.JTextArea;
+ import java.sql.*;
  
  public class TestMenu extends JFrame implements ActionListener{
  
@@ -124,9 +125,16 @@
        {
           System.exit(0);
        } else if(e.getSource() == vreg) {
-       	UserList frame = new UserList();
+       	try{
+		UserList frame = new UserList();
+		
        	frame.setSize(300, 500);
        	frame.setVisible(true);
+		} catch(SQLException se) {
+			se.printStackTrace();
+		} catch (ClassNotFoundException err) {
+			err.printStackTrace();
+		}
        }
     }
     public static void main(String[]args){
@@ -181,3 +189,6 @@
        }
     }
  }
+
+
+
