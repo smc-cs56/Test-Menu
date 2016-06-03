@@ -124,8 +124,9 @@
        {
           System.exit(0);
        } else if(e.getSource() == vreg) {
-       	VregFrame frame = new VregFrame();
-       	VregFrame.setVisible(true);
+       	UserList frame = new UserList();
+       	frame.setSize(300, 500);
+       	frame.setVisible(true);
        }
     }
     public static void main(String[]args){
@@ -181,42 +182,6 @@
     }
  }
 
-class VregFrame extends JFrame implements ActionListener {
-   private JPanel vregPanel = new JPanel();
-   private JButton back = new JButton("Back");
 
-   public VregFrame() {
-      
-      this.setSize(800, 600);
-      back.addActionListener(this);
-      vregPanel.add(back);
-	  this.add(vregPanel);
 
-   }
-
-   public void actionPerformed(ActionEvent e) {
-      if (e.getSource() == back) {
-         this.dispose();
-      }
-   }
-}
-
-class VregFrame extends JFrame implements ActionListener {
-   private JPanel vregPanel = new JPanel();
-   private JButton back = new JButton("Back");
-
-   public VregFrame() {
-      
-      this.setSize(800, 600);
-      back.addActionListener(this);
-      vregPanel.add(back);
-	  this.add(vregPanel);
-
-   }
-
-   public void actionPerformed(ActionEvent e) {
-      if (e.getSource() == back) {
-         this.dispose();
-      }
-   }
 }
