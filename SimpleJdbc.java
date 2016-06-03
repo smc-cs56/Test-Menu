@@ -30,7 +30,7 @@
  // Iterate through the result and print each column add resultSet.getString (with next column number as needed)
  while (resultSet.next())
  System.out.println(resultSet.getString(1) + "\t" +
- resultSet.getString(2) + "\t" + resultSet.getString(3)+ "\t");
+ resultSet.getString(2) + "\t" + resultSet.getString(3)+ "\t" + resultSet.getString(4)+ "\t");
 
  // Close the connection
  connection.close();
