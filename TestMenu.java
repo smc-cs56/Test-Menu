@@ -147,7 +147,30 @@
     {
        setLayout(new FlowLayout());
        //instructions area
-       instructions = new JTextArea("INSTRUCTIONS INSTRUCTIONS INSTRUCTIONS \nINSTRUCTIONS INSTRUCTIONS INSTRUCTIONS \nINSTRUCTIONS INSTRUCTIONS INSTRUCTIONS \n ");
+       instructions = new JTextArea(" \n\n***Instructions for the Memory Card Game***"
++"\n\n1.  Initially sixteen cards placed faced down,"
++"\nfour rows, and each row containing four cards."
++"\n\n2.Player matches two cards, computer reveals "
++ "\nthe cards, and decide whether they are match."
++"\n\n3.If each matches are scored, and the matched cards"
++ "\n are removed."
++"\n\n4.The missed cards are flipped over."
++"\n\n5.Game goes on until exit button is pressed."
+
+
++"\n\n***Instructions for the Card Trick Game.***"
+
++"\n\n1.  Initially sixteen cards are grouped into four"
++ "\n  groups of four cards."
++"\n\n2.  Cards are displayed face up."
++"\n\n3.  The player pickes up group where his typical"
++  "\n  card is belonging to."
++"\n\n4.  The cards are shuffled into different groups,"
++ "\n each new group has only one of previous groups' cards."
++"\n\n5.  User is told to pick new group where the original "
++  "\n card belongs."
++"\n\n6.  Computer reveals the secret card."
++"\n\n7.  The game is over.");
        add(instructions);
        
        back = new JButton("Back");
